@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="menu-content"></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="text-align:center">CREATE GROUP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+  <ion-list lines="full" color="secondary">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <ion-item color="tertiary">
+        <ion-label position="floating">Name</ion-label>
+        <ion-input formControlName="name" type="text" required></ion-input>
+      </ion-item>
+
+      <ion-item color="tertiary">
+        <ion-label position="floating">Nationality</ion-label>
+        <ion-input formControlName="nationality" type="text" required></ion-input>
+      </ion-item>
+
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="tertiary" expand="block" [routerLink]="'/home'">Add</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col style="text-align:center">
+          DONT FORGET TO PRESS <ion-icon name="reload-outline"></ion-icon> IN GROUPS TO REFRESH
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-list>
+</ion-content>

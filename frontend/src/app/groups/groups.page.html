@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="menu-content"></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="text-align:center">GROUPS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+  <ion-list color="secondary">
+    <ion-item-sliding *ngFor="let g of groups" color="tertiary">
+      <ion-item color="tertiary">
+        <ion-label>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <div>
+                  <h1>{{g.name}}</h1>
+                  <p>{{g.nationality}}</p>
+                </div>
+              </ion-col>
+              <ion-col> </ion-col>
+              <ion-col>
+                <div style="text-align:right" class="opacity">
+                  <ion-icon name="caret-back-outline"></ion-icon>
+                  <p>DRAG TO EDIT OR DELETE AND PRESS <ion-icon name="reload-outline" color="success"></ion-icon></p>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="success" [routerLink]="['/updategroup', g.id]">
+          <!--<ion-item-option color="success" (click)="goToUpdate(g.id)"> -->
+           <ion-icon name="create-outline" style="zoom: 1.5"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="danger" (click)="removeGroup(g.id)">
+          <ion-icon name="trash-outline" style="zoom: 1.5"></ion-icon></ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button color="success">
+      <ion-icon name="grid-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button color="success" [routerLink]="'/creategroup'"
+        ><ion-icon name="add-outline"></ion-icon
+      ></ion-fab-button>
+      <ion-fab-button color="success"
+      ><ion-icon name="reload-outline" (click)="getAllGroups()"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+</ion-content>
