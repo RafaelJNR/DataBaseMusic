@@ -16,9 +16,14 @@
             <ion-row>
               <ion-col>
                 <div>
+                  <ion-avatar slot="start">
+                    <img *ngIf="g.filename" src="http://localhost:8080/images/{{g.filename}}" alt="image"/>
+                  </ion-avatar>
+                  <ion-label>
                   <h1>{{g.name}}</h1>
                   <p>{{g.nationality}}</p>
-                </div>
+                </ion-label>
+              </div>
               </ion-col>
               <ion-col> </ion-col>
               <ion-col>
@@ -42,7 +47,7 @@
     </ion-item-sliding>
   </ion-list>
 
-  <ion-fab vertical="bottom" horizontal="end">
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button color="success">
       <ion-icon name="grid-outline"></ion-icon>
     </ion-fab-button>
@@ -50,8 +55,6 @@
       <ion-fab-button color="success" [routerLink]="'/creategroup'"
         ><ion-icon name="add-outline"></ion-icon
       ></ion-fab-button>
-      <ion-fab-button color="success"
-      ><ion-icon name="reload-outline" (click)="getAllGroups()"></ion-icon></ion-fab-button>
     </ion-fab-list>
   </ion-fab>
 

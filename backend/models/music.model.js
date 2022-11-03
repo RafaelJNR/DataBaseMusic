@@ -5,7 +5,10 @@ module.exports = (sequelize, Sequelize) => {
         },
         nationality: {
             type: Sequelize.STRING
-        }
+        },
+        filename: {
+            type: Sequelize.STRING
+          }
     });
 
     return Group;

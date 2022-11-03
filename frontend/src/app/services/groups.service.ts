@@ -32,8 +32,14 @@ export class GroupsService {
     return this.httpClient.delete(this.endpoint + '/' + id);
   }
 
-  createGroup(user: User){
-    return this.httpClient.post<User>(this.endpoint, JSON.stringify(user), this.httpOptions);
+  createGroup(group, blob){
+    //return this.httpClient.post<User>(this.endpoint, JSON.stringify(user), this.httpOptions);
+    let formData = new FormData();
+    formData.append("name", group.name);
+    formData.append("nationality", group.nationality);
+    formData.append("file", blob);
+
+    return this.httpClient.post(this.endpoint, formData);
   }
 
   getGroup(id) {

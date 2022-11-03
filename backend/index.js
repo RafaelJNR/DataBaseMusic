@@ -1,10 +1,16 @@
 const express = require("express");
 const cors = require("cors");
 
+//incluimos el path para las imagenes
+var path = require('path');
+
 const app = express();
 
 //parse reques of content-type -aplication/json
 app.use(express.json());
+
+//indicamos el path para las imagenes, el public directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 var corsOptions = {
     origin: "http://localhost:8100"
@@ -24,8 +30,8 @@ db.sequelize.sync();
 /*
 db.sequelize.sync({force: true}).then(() => {  
    console.log("Drop and resync db.");                                   
-});
-*/
+});*/
+
 
 //simple route
 app.get("/", (req, res)=>{

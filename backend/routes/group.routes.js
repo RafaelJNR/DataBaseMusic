@@ -1,10 +1,11 @@
 module.exports = app => {
     const groups = require("../controllers/group.controller.js");
 
+    var upload = require('../multer/upload');
     var router = require("express").Router();
 
     //create a new group
-    router.post("/", groups.create);
+    router.post("/", upload.single('file'), groups.create);
 
     //retrieve all groups
     router.get("/", groups.findAll);

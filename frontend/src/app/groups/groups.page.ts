@@ -18,6 +18,10 @@ export class GroupsPage implements OnInit {
     this.getAllGroups();
   }
 
+  ionViewWillEnter() {
+    this.getAllGroups();
+  }
+
   getAllGroups(){
     this.groupService.getgroups().subscribe(response=> {
       this.groups = response;

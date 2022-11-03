@@ -7,29 +7,47 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="secondary">
-  <ion-list lines="full" color="secondary">
-    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-      <ion-item color="tertiary">
-        <ion-label position="floating">Name</ion-label>
-        <ion-input formControlName="name" type="text" required></ion-input>
-      </ion-item>
+<ion-content>
 
-      <ion-item color="tertiary">
-        <ion-label position="floating">Nationality</ion-label>
-        <ion-input formControlName="nationality" type="text" required></ion-input>
-      </ion-item>
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="6">
+        <ion-img class="photo-frame" *ngIf="capturedPhoto" [src]="capturedPhoto" (click)="takePhoto()"></ion-img>
+        <ion-img class="photo-frame" *ngIf="!capturedPhoto" src="../../assets/No-Image-Placeholder.svg"
+          (click)="takePhoto()"></ion-img>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button color="primary" fill="outline" (click)="takePhoto()">
+          <ion-icon slot="start" name="camera-outline"></ion-icon>
+          Take a photo
+        </ion-button>
+        <ion-button color="primary" fill="outline" (click)="pickImage()">
+          <ion-icon slot="start" name="image-outline"></ion-icon>
+          Pick an image
+        </ion-button>
+        <ion-button color="danger" fill="outline" (click)="discardImage()">
+          <ion-icon slot="start" name="aperture"></ion-icon>
+          Discard image
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-      <ion-row>
-        <ion-col>
-          <ion-button type="submit" color="tertiary" expand="block" [routerLink]="'/home'">Add</ion-button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col style="text-align:center">
-          DONT FORGET TO PRESS <ion-icon name="reload-outline"></ion-icon> IN GROUPS TO REFRESH
-        </ion-col>
-      </ion-row>
-    </form>
-  </ion-list>
+  <form [formGroup]="groupForm" (ngSubmit)="submitForm()" novalidate>
+    <ion-item lines="full">
+      <ion-label position="floating">Name</ion-label>
+      <ion-input formControlName="name" type="text" required></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">Brand is required.</span>
+    <ion-item lines="full">
+      <ion-label position="floating">Nationality</ion-label>
+      <ion-input formControlName="nationality" type="text" required></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.nationality.errors?.required">Model is required.</span>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="primary" expand="block">Submit</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>

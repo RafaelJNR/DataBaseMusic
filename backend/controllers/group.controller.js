@@ -15,7 +15,8 @@ exports.create =(req, res)=>{
 //create a group
 const group ={
     name: req.body.name,
-    nationality: req.body.nationality
+    nationality: req.body.nationality,
+    filename: req.file ? req.file.filename : ""
 };
 
 //save group in db
