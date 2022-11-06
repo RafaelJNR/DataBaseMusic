@@ -6,6 +6,7 @@ export class User {
   _id: number;
   name: string;
   nationality: string;
+  filename: string;
 }
 
 
@@ -43,13 +44,25 @@ export class GroupsService {
   }
 
   getGroup(id) {
-    return this.httpClient.get(this.endpoint + '/' + id);
+    
+    const result = this.httpClient.get(this.endpoint + '/' + id);
+
+    return result;
+    
   }
 
   updateGroup(id, user: User) {
-    return this.httpClient.put(this.endpoint + '/' + id, JSON.stringify(user), this.httpOptions);
+ return this.httpClient.put(this.endpoint + '/' + id, JSON.stringify(user), this.httpOptions);
   }
  
+  // updateGroup(group, blob){
+  //   //return this.httpClient.post<User>(this.endpoint, JSON.stringify(user), this.httpOptions);
+  //   let formData = new FormData();
+  //   formData.append("name", group.name);
+  //   formData.append("nationality", group.nationality);
+  //   formData.append("file", blob);
 
+  //   return this.httpClient.put(this.endpoint+ '/' + group.id, formData);
+  // }
 }
 

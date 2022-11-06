@@ -7,6 +7,7 @@ __________
 ## Getting Started.
 
 Download the project: git clone https://github.com/RafaelJNR/DataBaseMusic.git
+Create folder backend/public/images to save images.
 __________
 
 

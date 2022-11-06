@@ -67,6 +67,7 @@ export class CreategroupPage implements OnInit {
       }
 
       this.groupService.createGroup(this.groupForm.value, blob).subscribe(data => {
+        console.log(blob);
         console.log("Photo sent!");
         this.router.navigateByUrl("/groups");
       })
